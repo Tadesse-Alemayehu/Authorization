@@ -1,3 +1,6 @@
+<% flash.each do |type, message|%>
+<p><%= message %></p>
+<%end%>
 <%= form_with model: @new_user do |form|%>
 <%= form.label :email, "email" %>
 <%= form.email_field :email, placeholder: "email" %>
