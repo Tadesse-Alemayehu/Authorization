@@ -1,0 +1,20 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<h1>Sign in</h1>
+<%= form_with model: @new_user, url: session_path do |form|%>
+<div>
+<%= form.label :email, "email" %>
+<%= form.email_field :email, placeholder: "email" %>
+</div>
+<div>
+<%= form.label :password, "password" %>
+<%= form.password_field :password, placeholder: "password" %>
+</div>
+<%= form.submit "Sing I" %>
+<%end%>
+
+

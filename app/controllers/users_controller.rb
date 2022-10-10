@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
+  def index
+    @users=User.all
+  end
   def new
     @new_user=User.new
   end
+
   def create
     @user=User.create(user_params)
     if @user
       flash[:success]=" user created successfully"
-      redirect_to users_new_path
+      redirect_to register_path
     end
   end
 
