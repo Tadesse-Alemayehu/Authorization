@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    User.find(cookies[:user_id]) if (cookies[:user_id])
+
+    if session[:user_id] && User.find_by_id(session[:user_id])
+      return User.find session[:user_id]
+    else
+      redirect_to sign_in_path, alert: "You need to sign in to access pages"
+      return nil
+    end
   end
+
 end

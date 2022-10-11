@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :current_user, only: %i[show destroy]
   def index
     @users = User.all
   end
@@ -10,6 +11,10 @@ class UsersController < ApplicationController
     # @current_user=User.new
   end
 
+  def show
+
+  end
+
   def create
     @user = User.create(user_params)
     if @user
@@ -18,6 +23,8 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+  end
   private
 
   def user_params
