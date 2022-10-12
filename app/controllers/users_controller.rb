@@ -16,11 +16,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    if @user
+    @user = User.new(user_params)
+    if @user.save
       session[:user_id]=@user.id
       flash[:success] = " user created successfully"
       redirect_to user_path, **flash
+    else
+      flash.now[:error]=@user.errors.full_messages.to_sentence
+      render :new
     end
   end
 

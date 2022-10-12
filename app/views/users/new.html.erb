@@ -1,7 +1,7 @@
 <% flash.each do |type, message|%>
 <p><%= message %></p>
 <%end%>
-<%= form_with model: @new_user do |form|%>
+<%= form_with model: @new_user, data: {turbo: false} do |form|%>
 <%= form.label :email, "email" %>
 <%= form.email_field :email, placeholder: "email" %>
 <%= form.label :password, "password" %>
