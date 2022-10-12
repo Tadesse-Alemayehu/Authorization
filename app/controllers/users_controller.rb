@@ -18,8 +18,9 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user
+      session[:user_id]=@user.id
       flash[:success] = " user created successfully"
-      redirect_to register_path
+      redirect_to user_path, **flash
     end
   end
 

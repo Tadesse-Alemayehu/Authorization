@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/sign_out", to: "session#destroy"
   post "session", to: "session#create"
   get "users", to: "users#index"
+  get "user", to: "users#show"
   get "register", to: "users#new"
   post "users", to: "users#create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

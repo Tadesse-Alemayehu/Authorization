@@ -6,13 +6,13 @@ class SessionController < ApplicationController
 
   def create
     @user = User.find_by(email: user_params[:email])
-    if @user && @user.password == user_params[:password]
+    if @user && @user.is_password?(user_params[:password])
 
       session[:user_id]=@user.id
-      flash[:notice] = "user created successfully"
+      flash[:notice] = "Singed in successfully"
       redirect_to user_path, **flash
     else
-      flash.now[:alert] = "fail to create user"
+      flash.now[:alert] = "user name or password is not valid"
       render :new
     end
   end
